@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://character/Traveller.tscn" type="PackedScene" id=1]
+[ext_resource path="res://train/Train.tscn" type="PackedScene" id=2]
+[ext_resource path="res://maps/TrainSystem.gd" type="Script" id=3]
+[ext_resource path="res://maps/TrainPath.gd" type="Script" id=4]
+
+[sub_resource type="Curve3D" id=4]
+_data = {
+"points": PoolVector3Array( -12, 0, -18, 12, 0, 18, 32, 0, -26, 15, 0, -13, -15, 0, 13, 23, 0, 27, 14, 0, 11, -14, 0, -11, -32, 0, 27, -25.4, 0, 18.3, 25.4, 0, -18.3, -35.1158, 0.0321198, -37.9927, -14, 0, -19, 14, 0, 19, 32, 0, -26 ),
+"tilts": PoolRealArray( 0, 0, 0, 0, 0 )
+}
+
+[sub_resource type="CubeMesh" id=1]
+size = Vector3( 10, 4, 10 )
+
+[node name="UnitedStates" type="Spatial"]
+
+[node name="TrainSystem" type="Node" parent="."]
+script = ExtResource( 3 )
+
+[node name="PathAB" type="Path" parent="TrainSystem"]
+curve = SubResource( 4 )
+script = ExtResource( 4 )
+stops = [ 116.0, 268.0 ]
+
+[node name="Train" parent="TrainSystem/PathAB" instance=ExtResource( 2 )]
+transform = Transform( 0.833375, 0, 0.552695, 0, 1, 0, -0.552707, 0, 0.833357, 32, 0, -26 )
+loop = true
+
+[node name="PlaneSystem" type="Node" parent="."]
+
+[node name="RailwayStationA" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 30.544, 2, -25.505 )
+mesh = SubResource( 1 )
+
+[node name="RailwayStationB" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -32.6114, 2, 26.8073 )
+mesh = SubResource( 1 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.883504, 0.468423, 0, -0.468423, 0.883504, 0, 30.046, 47.9756 )
+
+[node name="Traveller" parent="." instance=ExtResource( 1 )]
