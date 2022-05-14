@@ -16,14 +16,14 @@ func _on_traveller_in_range(traveller: Traveller) -> void:
 func _register_traveler(traveller: Traveller) -> void:
 	_travellers_tracked[traveller] = { "selected_route": -1 }
 	traveller.connect("route_selected", self, "_on_traveller_route_selected")
-	traveller.connect("back_attempted", self, "_on_traveller_back_requested")
+	#traveller.connect("back_attempted", self, "_on_traveller_back_requested")
 	traveller.routes_available = _routes
 
 
 func _on_traveller_out_of_range(traveller: Traveller) -> void:
 	if not _travellers_tracked.has(traveller): return
 	traveller.disconnect("route_selected", self, "_on_traveller_route_selected")
-	traveller.disconnect("back_attempted", self, "_on_traveller_back_requested")
+	#traveller.disconnect("back_attempted", self, "_on_traveller_back_requested")
 	_travellers_tracked.erase(traveller)
 	traveller.routes_available = []
 
@@ -45,11 +45,13 @@ func _on_traveller_route_selected(traveller: Traveller, index: int) -> void:
 	_register_traveler(traveller)
 	_travellers_tracked[traveller]["selected_route"] = index
 	_resolve_travellers()
+	traveller.routes_available = []
 
 
 func _on_traveller_back_requested(traveller: Traveller) -> void:
 	traveller.place_in_world($Exit)
 	_travellers_tracked[traveller]["selected_route"] = -1
+	traveller.routes_available = _routes
 
 
 func _resolve_travellers() -> void:

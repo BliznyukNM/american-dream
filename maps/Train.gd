@@ -63,7 +63,7 @@ func _wait_at_station(_train, _index) -> void:
 
 func register_traveller(traveller: Traveller) -> void:
 	traveller.place_in_entity(self)
-	traveller.connect("back_attempted", self, "_on_traveller_back_requested")
+	#traveller.connect("back_attempted", self, "_on_traveller_back_requested")
 	_registered_travellers.append(traveller)
 
 
@@ -73,7 +73,7 @@ func _on_traveller_back_requested(traveller: Traveller) -> void:
 
 
 func _unregister_traveller(traveller: Traveller) -> void:
-	traveller.disconnect("back_attempted", self, "_on_traveller_back_requested")
+	#traveller.disconnect("back_attempted", self, "_on_traveller_back_requested")
 	_registered_travellers.erase(traveller)
 	emit_signal("traveller_exited", self, traveller, next_station)
 	print("Traveller delivered")

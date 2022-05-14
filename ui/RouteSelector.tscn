@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://ui/CardStackContainer.gd" type="Script" id=1]
 [ext_resource path="res://ui/RouteSelector.gd" type="Script" id=2]
+[ext_resource path="res://assets/textures/train_ticket.png" type="Texture" id=3]
 
 [node name="RouteSelector" type="Control"]
 anchor_right = 1.0
@@ -13,21 +14,25 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -98.0
+margin_left = -68.0
 margin_top = -88.0
-margin_right = 98.0
+margin_right = 68.0
 margin_bottom = -18.0
 script = ExtResource( 1 )
 shift = Vector2( 5, -5 )
 
-[node name="Ticket" type="ColorRect" parent="Container"]
-margin_right = 196.0
+[node name="Ticket" type="TextureRect" parent="Container"]
+margin_right = 136.0
 margin_bottom = 70.0
-color = Color( 0.462745, 0.462745, 0.462745, 1 )
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 5
 
 [node name="Label" type="Label" parent="Container/Ticket"]
+modulate = Color( 0, 0, 0, 1 )
 anchor_right = 1.0
-anchor_bottom = 1.0
+margin_top = 13.0
+margin_bottom = 27.0
 text = "Ticket 1"
 align = 1
 valign = 1
