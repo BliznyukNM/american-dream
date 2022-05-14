@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://character/Traveller.tscn" type="PackedScene" id=1]
 [ext_resource path="res://train/Train.tscn" type="PackedScene" id=2]
@@ -10,6 +10,12 @@
 _data = {
 "points": PoolVector3Array( -7.36577, 0.407694, -16.6407, 7.36577, -0.407694, 16.6407, 31.2957, 1.23163, -26.4737, 15, 0, -13, -15, 0, 13, 23, 0, 27, 14, 0, 11, -14, 0, -11, -32, 0, 27, -7.70769, -0.00936127, 29.514, 7.70769, 0.00936127, -29.514, -86.3105, 0.0142441, -14.3559, -21.0375, -0.0188522, 4.00058, 21.0375, 0.0188522, -4.00058, -48.1346, 1.94806, -58.5026, -12.576, 0.0731339, -7.9682, 12.576, -0.0731339, 7.9682, 7.34581, 1.10794, -61.8902, -7.64142, 0.0513659, -17.2453, 7.64142, -0.0513659, 17.2453, 31.2957, 1.23163, -26.4737 ),
 "tilts": PoolRealArray( 0, 0, 0, 0, 0, 0, 0 )
+}
+
+[sub_resource type="Curve3D" id=5]
+_data = {
+"points": PoolVector3Array( 30, 0, 0, -30, 0, 0, -50, 0, -58, 1, 0, 26, -1, 0, -26, -98, 0, -119, -27, 0, 11, 27, 0, -11, -47, 0, -189, -16.6, -0.2, -29.5, 16.6, 0.2, 29.5, 10, 0, -168, 12, 0, -14, -12, 0, 14, 11, 0, -88, 34, 0, 0, -34, 0, 0, -50, 0, -58 ),
+"tilts": PoolRealArray( 0, 0, 0, 0, 0, 0 )
 }
 
 [node name="UnitedStates" type="Spatial"]
@@ -26,9 +32,18 @@ stations = [ NodePath("../StationB"), NodePath("../StationC"), NodePath("../Stat
 
 [node name="Train" parent="TrainSystem/PathABC" instance=ExtResource( 2 )]
 transform = Transform( 0.915247, 0.00905119, 0.402781, 0, 0.999748, -0.0224648, -0.402894, 0.0205614, 0.914989, 31.2957, 1.23163, -26.4737 )
-loop = true
 speed = 120
 stop_delay = 1.0
+
+[node name="PathCD" type="Path" parent="TrainSystem"]
+curve = SubResource( 5 )
+script = ExtResource( 4 )
+stops = [ 239.0 ]
+stations = [ NodePath("../StationD"), NodePath("../StationC") ]
+
+[node name="Train" parent="TrainSystem/PathCD" instance=ExtResource( 2 )]
+transform = Transform( -0.00264444, 0, -0.999981, 0, 1, 0, 0.999997, 0, -0.0026444, -50, 0, -58 )
+speed = 40
 
 [node name="StationA" parent="TrainSystem" instance=ExtResource( 5 )]
 transform = Transform( -0.386244, 0, 0.922396, 0, 1, 0, -0.922396, 0, -0.386244, 32.2814, 7.62939e-06, -26.9671 )
@@ -40,13 +55,18 @@ _routes = [ NodePath("../PathABC") ]
 
 [node name="StationC" parent="TrainSystem" instance=ExtResource( 5 )]
 transform = Transform( 0.974827, 0, 0.222961, 0, 1, 0, -0.222961, 0, 0.974827, -50.9119, 7.62939e-06, -58.1495 )
-_routes = [ NodePath("../PathABC") ]
+_routes = [ NodePath("../PathABC"), NodePath("../PathCD") ]
+
+[node name="StationD" parent="TrainSystem" instance=ExtResource( 5 )]
+transform = Transform( 0.467668, 0, -0.883904, 0, 1, 0, 0.883904, 0, 0.467668, 7.0881, 7.62939e-06, -174.15 )
+_routes = [ NodePath("../PathCD") ]
 
 [node name="PlaneSystem" type="Node" parent="."]
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.883504, 0.468423, 0, -0.468423, 0.883504, -19.3585, 46.2405, 69.7704 )
-far = 200.0
+far = 1000.0
 
 [node name="Traveller" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -38.6022, 0, -42.0954 )
+speed = 40.0

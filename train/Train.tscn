@@ -6,7 +6,6 @@
 [node name="Train" type="PathFollow"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.999986, 0, 0, 0 )
 rotation_mode = 4
-loop = false
 script = ExtResource( 1 )
 
 [node name="Train_Model" parent="." instance=ExtResource( 2 )]

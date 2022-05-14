@@ -6,6 +6,9 @@ signal route_selected(traveller, route)
 signal back_attempted(traveller)
 
 
+export var speed: = 10.0
+
+
 var routes_available: Array
 var in_entity: bool
 
@@ -35,7 +38,7 @@ func _process(_delta: float) -> void:
 func _apply_movement(direction: Vector2) -> void:
 	var movement: = Vector3(direction.x, 0, direction.y)
 	movement = movement.normalized() if movement.length_squared() > 1 else movement
-	move_and_slide(movement * 10)
+	move_and_slide(movement * speed)
 
 
 func place_in_entity(entity: Node) -> void:

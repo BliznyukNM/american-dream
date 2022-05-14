@@ -15,7 +15,7 @@ export var next_station: = 0
 var path: TrainPath
 
 
-const epsilon = 0.01
+const epsilon = 0.1
 
 
 var _stops: Array
