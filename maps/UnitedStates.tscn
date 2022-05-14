@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://character/Traveller.tscn" type="PackedScene" id=1]
 [ext_resource path="res://train/Train.tscn" type="PackedScene" id=2]
@@ -7,38 +7,31 @@
 
 [sub_resource type="Curve3D" id=4]
 _data = {
-"points": PoolVector3Array( -12, 0, -18, 12, 0, 18, 32, 0, -26, 15, 0, -13, -15, 0, 13, 23, 0, 27, 14, 0, 11, -14, 0, -11, -32, 0, 27, -25.4, 0, 18.3, 25.4, 0, -18.3, -35.1158, 0.0321198, -37.9927, -14, 0, -19, 14, 0, 19, 32, 0, -26 ),
-"tilts": PoolRealArray( 0, 0, 0, 0, 0 )
+"points": PoolVector3Array( -7.36577, 0.407694, -16.6407, 7.36577, -0.407694, 16.6407, 31.2957, 1.23163, -26.4737, 15, 0, -13, -15, 0, 13, 23, 0, 27, 14, 0, 11, -14, 0, -11, -32, 0, 27, -7.70769, -0.00936127, 29.514, 7.70769, 0.00936127, -29.514, -86.3105, 0.0142441, -14.3559, -21.0375, -0.0188522, 4.00058, 21.0375, 0.0188522, -4.00058, -48.1346, 1.94806, -58.5026, -12.576, 0.0731339, -7.9682, 12.576, -0.0731339, 7.9682, 7.34581, 1.10794, -61.8902, -7.64142, 0.0513659, -17.2453, 7.64142, -0.0513659, 17.2453, 31.2957, 1.23163, -26.4737 ),
+"tilts": PoolRealArray( 0, 0, 0, 0, 0, 0, 0 )
 }
-
-[sub_resource type="CubeMesh" id=1]
-size = Vector3( 10, 4, 10 )
 
 [node name="UnitedStates" type="Spatial"]
 
 [node name="TrainSystem" type="Node" parent="."]
 script = ExtResource( 3 )
 
-[node name="PathAB" type="Path" parent="TrainSystem"]
+[node name="PathABC" type="Path" parent="TrainSystem"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0539551, 0.315765, -0.285706 )
 curve = SubResource( 4 )
 script = ExtResource( 4 )
-stops = [ 116.0, 268.0 ]
+stops = [ 116.0, 255.0 ]
 
-[node name="Train" parent="TrainSystem/PathAB" instance=ExtResource( 2 )]
-transform = Transform( 0.833375, 0, 0.552695, 0, 1, 0, -0.552707, 0, 0.833357, 32, 0, -26 )
+[node name="Train" parent="TrainSystem/PathABC" instance=ExtResource( 2 )]
+transform = Transform( 0.915247, 0.00905119, 0.402781, 0, 0.999748, -0.0224648, -0.402894, 0.0205614, 0.91499, 31.2957, 1.23163, -26.4737 )
 loop = true
+speed = 60
+stop_delay = 0.1
 
 [node name="PlaneSystem" type="Node" parent="."]
 
-[node name="RailwayStationA" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 30.544, 2, -25.505 )
-mesh = SubResource( 1 )
-
-[node name="RailwayStationB" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -32.6114, 2, 26.8073 )
-mesh = SubResource( 1 )
-
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.883504, 0.468423, 0, -0.468423, 0.883504, 0, 30.046, 47.9756 )
+transform = Transform( 1, 0, 0, 0, 0.883504, 0.468423, 0, -0.468423, 0.883504, -19.3585, 46.2405, 69.7704 )
+far = 200.0
 
 [node name="Traveller" parent="." instance=ExtResource( 1 )]

@@ -10,6 +10,9 @@ export var stop_delay: = 2.0
 export var next_station: = 0
 
 
+const epsilon = 0.01
+
+
 var stops: Array
 
 
@@ -31,7 +34,7 @@ func _go_to_station() -> void:
 	var point_next = stops[next_station]
 	
 	var tween = create_tween()
-	tween.tween_property(self, "offset", point_next, (point_next - point_from) / speed).set_trans(Tween.TRANS_QUAD)
+	tween.tween_property(self, "offset", point_next + epsilon, (point_next - point_from) / speed).set_trans(Tween.TRANS_QUAD)
 	
 	yield(tween, "finished")
 	emit_signal("station_reached")
