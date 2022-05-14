@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://character/Traveller.tscn" type="PackedScene" id=1]
 [ext_resource path="res://train/Train.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://assets/models/scenes/Map.tscn" type="PackedScene" id=8]
 [ext_resource path="res://maps/ZoomingCamera.gd" type="Script" id=9]
 [ext_resource path="res://ui/TopBar.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/models/scenes/Everglades.tscn" type="PackedScene" id=11]
 
 [sub_resource type="Curve3D" id=4]
 _data = {
@@ -84,3 +85,9 @@ min_zoom_rotation = Vector3( -57, 0, 0 )
 min_zoom_fov = 70.0
 
 [node name="TopBar" parent="." instance=ExtResource( 10 )]
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 350.788, 0 )
+
+[node name="everglades" parent="." instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -217.195 )

@@ -4,6 +4,7 @@ class_name Traveller
 
 signal route_selected(traveller, route)
 signal back_attempted(traveller)
+signal select_attempted(traveller)
 signal routes_changed(traveller, routes)
 
 
@@ -30,6 +31,9 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("traveller_keyboard_back"):
 		emit_signal("back_attempted", self)
+	
+	if Input.is_action_just_pressed("traveller_keyboard_select"):
+		emit_signal("select_attempted", self)
 	
 	if not _can_move: return
 	
