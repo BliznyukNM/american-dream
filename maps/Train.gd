@@ -20,6 +20,7 @@ const epsilon = 0.1
 
 var _stops: Array
 var _waiting: bool
+var _registered_travellers: Array
 
 
 func _ready() -> void:
@@ -45,6 +46,10 @@ func _go_to_station(_train, _index) -> void:
 	tween.tween_property(self, "offset", point_next + epsilon, (point_next - point_from) / speed).set_trans(Tween.TRANS_QUAD)
 	
 	yield(tween, "finished")
+	
+	for traveller in _registered_travellers:
+		_unregister_traveller(traveller)
+	
 	emit_signal("station_reached", self, next_station)
 
 
@@ -59,14 +64,16 @@ func _wait_at_station(_train, _index) -> void:
 func register_traveller(traveller: Traveller) -> void:
 	traveller.place_in_entity(self)
 	traveller.connect("back_attempted", self, "_on_traveller_back_requested")
-	print("Traveller is on train ", self)
+	_registered_travellers.append(traveller)
 
 
 func _on_traveller_back_requested(traveller: Traveller) -> void:
 	if not _waiting: return
 	_unregister_traveller(traveller)
-	emit_signal("traveller_exited", self, traveller, next_station)
 
 
 func _unregister_traveller(traveller: Traveller) -> void:
 	traveller.disconnect("back_attempted", self, "_on_traveller_back_requested")
+	_registered_travellers.erase(traveller)
+	emit_signal("traveller_exited", self, traveller, next_station)
+	print("Traveller delivered")

@@ -4,12 +4,13 @@ class_name Traveller
 
 signal route_selected(traveller, route)
 signal back_attempted(traveller)
+signal routes_changed(traveller, routes)
 
 
 export var speed: = 10.0
 
 
-var routes_available: Array
+var routes_available: Array = [] setget set_routes_available
 var in_entity: bool
 
 
@@ -22,8 +23,6 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	if routes_available != null and Input.is_action_just_pressed("traveller_keyboard_select"):
-		emit_signal("route_selected", self, 0)
 	if Input.is_action_just_pressed("traveller_keyboard_back"):
 		emit_signal("back_attempted", self)
 	
@@ -55,3 +54,13 @@ func place_in_world(exit: Spatial) -> void:
 	get_parent().remove_child(self)
 	_map_root.add_child(self)
 	translation = exit.global_transform.origin
+
+
+func select_route(index: int) -> void:
+	print("selecter ", index, " route")
+	emit_signal("route_selected", self, index)
+
+
+func set_routes_available(value: Array) -> void:
+	routes_available = value
+	emit_signal("routes_changed", self, routes_available)

@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://character/Traveller.tscn" type="PackedScene" id=1]
 [ext_resource path="res://train/Train.tscn" type="PackedScene" id=2]
 [ext_resource path="res://maps/TrainSystem.gd" type="Script" id=3]
 [ext_resource path="res://maps/TrainPath.gd" type="Script" id=4]
 [ext_resource path="res://train/Station.tscn" type="PackedScene" id=5]
+[ext_resource path="res://ui/RouteSelector.tscn" type="PackedScene" id=6]
+[ext_resource path="res://maps/Game.gd" type="Script" id=7]
 
 [sub_resource type="Curve3D" id=4]
 _data = {
@@ -19,6 +21,7 @@ _data = {
 }
 
 [node name="UnitedStates" type="Spatial"]
+script = ExtResource( 7 )
 
 [node name="TrainSystem" type="Node" parent="."]
 script = ExtResource( 3 )
@@ -42,7 +45,7 @@ stops = [ 239.0 ]
 stations = [ NodePath("../StationD"), NodePath("../StationC") ]
 
 [node name="Train" parent="TrainSystem/PathCD" instance=ExtResource( 2 )]
-transform = Transform( -0.00264444, 0, -0.999981, 0, 1, 0, 0.999997, 0, -0.0026444, -50, 0, -58 )
+transform = Transform( -0.00264445, 0, -0.99998, 0, 1, 0, 0.999997, 0, -0.0026444, -50, 0, -58 )
 speed = 40
 
 [node name="StationA" parent="TrainSystem" instance=ExtResource( 5 )]
@@ -63,10 +66,12 @@ _routes = [ NodePath("../PathCD") ]
 
 [node name="PlaneSystem" type="Node" parent="."]
 
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.883504, 0.468423, 0, -0.468423, 0.883504, -19.3585, 46.2405, 69.7704 )
+[node name="Traveller" parent="." instance=ExtResource( 1 )]
+speed = 40.0
+
+[node name="Camera" type="Camera" parent="Traveller"]
+transform = Transform( 1, 0, 0, 0, 0.883504, 0.468423, 0, -0.468423, 0.883504, 0, 26.241, 25.77 )
 far = 1000.0
 
-[node name="Traveller" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -38.6022, 0, -42.0954 )
-speed = 40.0
+[node name="RouteSelector" parent="." instance=ExtResource( 6 )]
+visible = false

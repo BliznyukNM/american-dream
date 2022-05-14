@@ -25,6 +25,7 @@ func _on_traveller_out_of_range(traveller: Traveller) -> void:
 	traveller.disconnect("route_selected", self, "_on_traveller_route_selected")
 	traveller.disconnect("back_attempted", self, "_on_traveller_back_requested")
 	_travellers_tracked.erase(traveller)
+	traveller.routes_available = []
 
 
 func _on_train_arrived(train: Train, station_index: int) -> void:
