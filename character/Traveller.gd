@@ -8,6 +8,7 @@ signal routes_changed(traveller, routes)
 
 
 export var speed: = 10.0
+export var gravity: = -9.81
 
 
 var routes_available: Array = [] setget set_routes_available
@@ -16,13 +17,14 @@ var in_entity: bool
 
 var _can_move: bool = true
 var _map_root: Node
+var _velocity: Vector3
 
 
 func _ready() -> void:
 	_map_root = get_parent()
 
 
-func _process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("traveller_keyboard_back"):
 		emit_signal("back_attempted", self)
 	
@@ -31,13 +33,14 @@ func _process(_delta: float) -> void:
 	var direction = Vector2.ZERO
 	direction.x = Input.get_action_strength("traveller_keyboard_right") - Input.get_action_strength("traveller_keyboard_left")
 	direction.y = Input.get_action_strength("traveller_keyboard_down") - Input.get_action_strength("traveller_keyboard_up")
-	_apply_movement(direction)
+	_apply_movement(direction, delta)
 
 
-func _apply_movement(direction: Vector2) -> void:
+func _apply_movement(direction: Vector2, delta: float) -> void:
 	var movement: = Vector3(direction.x, 0, direction.y)
 	movement = movement.normalized() if movement.length_squared() > 1 else movement
-	move_and_slide(movement * speed)
+	movement.y = 0 if is_on_floor() else gravity
+	move_and_slide(movement * speed, Vector3.UP, true, 4)
 
 
 func place_in_entity(entity: Node) -> void:
