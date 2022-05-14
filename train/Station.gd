@@ -1,4 +1,5 @@
 extends Area
+class_name Station
 
 
 export(Array, NodePath) var _routes: Array
@@ -17,7 +18,7 @@ func _register_traveler(traveller: Traveller) -> void:
 	_travellers_tracked[traveller] = { "selected_route": -1 }
 	traveller.connect("route_selected", self, "_on_traveller_route_selected")
 	#traveller.connect("back_attempted", self, "_on_traveller_back_requested")
-	traveller.routes_available = _routes
+	traveller.set_station_info(_routes, get_path())
 
 
 func _on_traveller_out_of_range(traveller: Traveller) -> void:
@@ -25,7 +26,7 @@ func _on_traveller_out_of_range(traveller: Traveller) -> void:
 	traveller.disconnect("route_selected", self, "_on_traveller_route_selected")
 	#traveller.disconnect("back_attempted", self, "_on_traveller_back_requested")
 	_travellers_tracked.erase(traveller)
-	traveller.routes_available = []
+	traveller.set_station_info([], "")
 
 
 func _on_train_arrived(train: Train, station_index: int) -> void:
@@ -45,13 +46,13 @@ func _on_traveller_route_selected(traveller: Traveller, index: int) -> void:
 	_register_traveler(traveller)
 	_travellers_tracked[traveller]["selected_route"] = index
 	_resolve_travellers()
-	traveller.routes_available = []
+	traveller.set_station_info([], "")
 
 
 func _on_traveller_back_requested(traveller: Traveller) -> void:
 	traveller.place_in_world($Exit)
 	_travellers_tracked[traveller]["selected_route"] = -1
-	traveller.routes_available = _routes
+	traveller.set_station_info(_routes, get_path())
 
 
 func _resolve_travellers() -> void:

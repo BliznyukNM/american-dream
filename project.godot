@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Area",
+"class": "Station",
+"language": "GDScript",
+"path": "res://train/Station.gd"
+}, {
 "base": "PathFollow",
 "class": "Train",
 "language": "GDScript",
@@ -25,6 +30,7 @@ _global_script_classes=[ {
 "path": "res://character/Traveller.gd"
 } ]
 _global_script_class_icons={
+"Station": "",
 "Train": "",
 "TrainPath": "",
 "Traveller": ""

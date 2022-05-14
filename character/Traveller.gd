@@ -9,9 +9,12 @@ signal routes_changed(traveller, routes)
 
 export var speed: = 10.0
 export var gravity: = -9.81
+export var money: = 100
+export var points: = 0
 
 
-var routes_available: Array = [] setget set_routes_available
+var routes_available: Array = []
+var close_station: NodePath
 var in_entity: bool
 
 
@@ -59,11 +62,13 @@ func place_in_world(exit: Spatial) -> void:
 	translation = exit.global_transform.origin
 
 
-func select_route(index: int) -> void:
-	print("selecter ", index, " route")
+func select_route(index: int, cost: int) -> void:
+	money -= cost
 	emit_signal("route_selected", self, index)
+	print(money)
 
 
-func set_routes_available(value: Array) -> void:
-	routes_available = value
+func set_station_info(routes: Array, station: NodePath) -> void:
+	routes_available = routes
+	close_station = station
 	emit_signal("routes_changed", self, routes_available)

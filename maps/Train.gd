@@ -76,4 +76,3 @@ func _unregister_traveller(traveller: Traveller) -> void:
 	#traveller.disconnect("back_attempted", self, "_on_traveller_back_requested")
 	_registered_travellers.erase(traveller)
 	emit_signal("traveller_exited", self, traveller, next_station)
-	print("Traveller delivered")

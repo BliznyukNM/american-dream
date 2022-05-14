@@ -8,6 +8,14 @@ export var shift: Vector2
 var selected_index: = 0
 
 
+func can_buy_selected() -> bool:
+	return get_child(selected_index).can_buy
+
+
+func get_selected_ticket_cost() -> int:
+	return get_child(selected_index).cost
+
+
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_SORT_CHILDREN:
 		_rebuild()
