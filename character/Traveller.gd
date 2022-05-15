@@ -40,7 +40,7 @@ func _physics_process(delta: float) -> void:
 	
 	if not _can_move: return
 	
-	if Input.is_action_just_pressed("traveller_keyboard_car_toggle"):
+	if money > 0 and Input.is_action_just_pressed("traveller_keyboard_car_toggle"):
 		_enable_car(not _is_car())
 	
 	var direction = Vector2.ZERO
@@ -48,7 +48,9 @@ func _physics_process(delta: float) -> void:
 	direction.y = Input.get_action_strength("traveller_keyboard_down") - Input.get_action_strength("traveller_keyboard_up")
 	_apply_movement(direction, delta)
 	
-	if _is_car(): money -= car_rent_per_second * delta
+	if _is_car():
+		money = max(0, money - car_rent_per_second * delta)
+		if money <= 0: _enable_car(false)
 
 
 func _enable_car(enable: bool) -> void:
