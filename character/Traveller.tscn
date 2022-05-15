@@ -12,6 +12,8 @@ radius = 0.5
 [node name="Traveller" type="KinematicBody"]
 script = ExtResource( 1 )
 speed = 5.0
+money = 1300.0
+car_rent_per_second = 25
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 0 )
