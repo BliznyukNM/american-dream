@@ -21,8 +21,8 @@ func _process(delta: float) -> void:
 		
 	if traveller.routes_available.size() > 0 and Input.is_action_just_pressed("traveller_keyboard_select") and $RouteSelector/Container.can_buy_selected():
 		traveller.select_route($RouteSelector/Container.selected_index, $RouteSelector/Container.get_selected_ticket_cost())
-		top_bar.update_money(traveller.money)
 	
+	top_bar.update_money(int(traveller.money))
 	top_bar.update_points(traveller.points)
 	var hours_int: = int(hours)
 	top_bar.update_time(hours_int % 24, hours_int / 24)

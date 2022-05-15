@@ -10,8 +10,9 @@ signal routes_changed(traveller, routes)
 
 export var speed: = 10.0
 export var car_speed: = 40.0
-export var money: = 100
+export var money: = 100.0
 export var points: = 0
+export var car_rent_per_second: = 1
 
 
 var routes_available: Array = []
@@ -46,6 +47,8 @@ func _physics_process(delta: float) -> void:
 	direction.x = Input.get_action_strength("traveller_keyboard_right") - Input.get_action_strength("traveller_keyboard_left")
 	direction.y = Input.get_action_strength("traveller_keyboard_down") - Input.get_action_strength("traveller_keyboard_up")
 	_apply_movement(direction, delta)
+	
+	if _is_car(): money -= car_rent_per_second * delta
 
 
 func _enable_car(enable: bool) -> void:
