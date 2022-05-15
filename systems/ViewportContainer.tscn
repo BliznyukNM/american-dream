@@ -2,7 +2,7 @@
 
 [ext_resource path="res://maps/ZoomingCamera.gd" type="Script" id=2]
 [ext_resource path="res://ui/RouteSelector.tscn" type="PackedScene" id=3]
-[ext_resource path="res://ui/TopBar.tscn" type="PackedScene" id=4]
+[ext_resource path="res://ui/LeftTopBar.tscn" type="PackedScene" id=4]
 [ext_resource path="res://systems/PlayerViewport.gd" type="Script" id=5]
 
 [node name="ViewportContainer" type="ViewportContainer"]

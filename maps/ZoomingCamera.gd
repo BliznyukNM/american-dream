@@ -5,6 +5,10 @@ export var max_zoom_global_point: Vector3
 export var max_zoom_rotation: Vector3
 export var max_zoom_fov: float
 
+export var middle_zoom_local_point: Vector3
+export var middle_zoom_rotation: Vector3
+export var middle_zoom_fov: float
+
 export var min_zoom_local_point: Vector3
 export var min_zoom_rotation: Vector3
 export var min_zoom_fov: float
