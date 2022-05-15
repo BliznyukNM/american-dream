@@ -22,6 +22,7 @@ var in_entity: bool
 
 var _can_move: bool = true
 var _map_root: Node
+var _input_prefix: String
 
 
 func _is_car() -> bool: return $AMERIVAN.visible
@@ -31,21 +32,28 @@ func _ready() -> void:
 	_map_root = get_parent()
 
 
+func set_input_prefix(prefix: String) -> void:
+	_input_prefix = prefix
+
+func pr(postfix: String) -> String:
+	return _input_prefix + "_" + postfix
+
+
 func _physics_process(delta: float) -> void:
-	if Input.is_action_just_pressed("traveller_keyboard_back"):
+	if Input.is_action_just_pressed(pr("back")):
 		emit_signal("back_attempted", self)
 	
-	if Input.is_action_just_pressed("traveller_keyboard_select"):
+	if Input.is_action_just_pressed(pr("select")):
 		emit_signal("select_attempted", self)
 	
 	if not _can_move: return
 	
-	if money > 0 and Input.is_action_just_pressed("traveller_keyboard_car_toggle"):
+	if money > 0 and Input.is_action_just_pressed(pr("car_toggle")):
 		_enable_car(not _is_car())
 	
 	var direction = Vector2.ZERO
-	direction.x = Input.get_action_strength("traveller_keyboard_right") - Input.get_action_strength("traveller_keyboard_left")
-	direction.y = Input.get_action_strength("traveller_keyboard_down") - Input.get_action_strength("traveller_keyboard_up")
+	direction.x = Input.get_action_strength(pr("right")) - Input.get_action_strength(pr("left"))
+	direction.y = Input.get_action_strength(pr("down")) - Input.get_action_strength(pr("up"))
 	_apply_movement(direction, delta)
 	
 	if _is_car():

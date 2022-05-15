@@ -1,13 +1,10 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=17 format=2]
 
-[ext_resource path="res://character/Traveller.tscn" type="PackedScene" id=1]
 [ext_resource path="res://systems/TrainSystem.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/music/team 14_fin.wav" type="AudioStream" id=3]
-[ext_resource path="res://ui/RouteSelector.tscn" type="PackedScene" id=6]
+[ext_resource path="res://systems/ViewportContainer.tscn" type="PackedScene" id=4]
 [ext_resource path="res://maps/Game.gd" type="Script" id=7]
 [ext_resource path="res://assets/models/scenes/US.tscn" type="PackedScene" id=8]
-[ext_resource path="res://maps/ZoomingCamera.gd" type="Script" id=9]
-[ext_resource path="res://ui/TopBar.tscn" type="PackedScene" id=10]
 [ext_resource path="res://monuments/Niagara.tscn" type="PackedScene" id=11]
 [ext_resource path="res://monuments/Arena.tscn" type="PackedScene" id=12]
 [ext_resource path="res://monuments/Statue.tscn" type="PackedScene" id=13]
@@ -22,73 +19,69 @@
 
 [node name="UnitedStates" type="Spatial"]
 script = ExtResource( 7 )
+player_count = 2
+input_prefixes = [ "traveller_joy_1", "traveller_joy_2" ]
+starting_points = [ Vector3( 402, 0, 72 ), Vector3( -571, 0, -132 ) ]
+
+[node name="World" type="Spatial" parent="."]
+
+[node name="US" parent="World" instance=ExtResource( 8 )]
+transform = Transform( 250, 0, 0, 0, 0, 0, 0, 0, 250, -101.021, 0, 365.231 )
+
+[node name="Trees" type="Node" parent="World"]
+
+[node name="TrainSystem" parent="World" instance=ExtResource( 2 )]
+
+[node name="PlaneSystem" type="Node" parent="World"]
+
+[node name="Monuments" type="Node" parent="World"]
+
+[node name="Niagara " parent="World/Monuments" instance=ExtResource( 11 )]
+transform = Transform( 0.935858, 0.00129544, 0.352375, -0.00109237, 0.999999, -0.00077512, -0.352376, 0.000340475, 0.935858, 362.597, 0, 19.184 )
+
+[node name="Arena" parent="World/Monuments" instance=ExtResource( 12 )]
+transform = Transform( 0.386223, 0.000174779, -0.922406, -3.73901e-05, 1, 0.000173822, 0.922406, -3.26252e-05, 0.386223, 109.742, 0, 47.06 )
+
+[node name="Statue" parent="World/Monuments" instance=ExtResource( 13 )]
+transform = Transform( 0.817678, 0, 0.575676, 0, 1, 0, -0.575676, 0, 0.817678, 464.27, 0, 43.875 )
+
+[node name="White_house" parent="World/Monuments" instance=ExtResource( 14 )]
+transform = Transform( 0.986675, -0.00376303, -0.162662, 0.00394051, 0.999992, 0.000768544, 0.162657, -0.00139929, 0.986682, 382.684, 0, 133.673 )
+
+[node name="Distillery" parent="World/Monuments" instance=ExtResource( 16 )]
+transform = Transform( 0.956044, 0, 0.293223, 0, 1, 0, -0.293223, 0, 0.956044, 229.806, -1.21793, 256.21 )
+
+[node name="everglades" parent="World/Monuments" instance=ExtResource( 15 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 338.669, 0, 475.441 )
+
+[node name="Factory" parent="World/Monuments" instance=ExtResource( 17 )]
+transform = Transform( 0.826609, 0, -0.562776, 0, 1, 0, 0.562776, 0, 0.826609, 228.134, 0, 52.966 )
+
+[node name="Burgers" parent="World/Monuments" instance=ExtResource( 18 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -107.481, 0, 26.332 )
+
+[node name="Route66" parent="World/Monuments" instance=ExtResource( 19 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -74.3032, 0, 288.316 )
+
+[node name="Hollywood" parent="World/Monuments" instance=ExtResource( 20 )]
+transform = Transform( 0.996544, -0.000169527, 0.083068, 0.000159239, 1, 0.000130494, -0.083068, -0.000116818, 0.996544, -610.88, 0, 88.7605 )
+
+[node name="Aspen" parent="World/Monuments" instance=ExtResource( 21 )]
+transform = Transform( 0.516015, 0.000124115, 0.85658, -4.50868e-05, 1, -0.000117732, -0.85658, 2.21128e-05, 0.516015, -292.747, -0.01703, 148.549 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 1
+
+[node name="ViewportContainer" parent="HBoxContainer" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1024.0
+margin_bottom = 600.0
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 350.788, 0 )
-
-[node name="US" parent="." instance=ExtResource( 8 )]
-transform = Transform( 250, 0, 0, 0, 0, 0, 0, 0, 250, -101.021, 0, 365.231 )
-
-[node name="Trees" type="Node" parent="."]
-
-[node name="TrainSystem" parent="." instance=ExtResource( 2 )]
-
-[node name="PlaneSystem" type="Node" parent="."]
-
-[node name="Monuments" type="Node" parent="."]
-
-[node name="Niagara " parent="Monuments" instance=ExtResource( 11 )]
-transform = Transform( 0.935858, 0.00129544, 0.352375, -0.00109237, 0.999999, -0.00077512, -0.352376, 0.000340475, 0.935858, 362.597, 0, 19.184 )
-
-[node name="Arena" parent="Monuments" instance=ExtResource( 12 )]
-transform = Transform( 0.386223, 0.000174779, -0.922406, -3.73901e-05, 1, 0.000173822, 0.922406, -3.26252e-05, 0.386223, 109.742, 0, 47.06 )
-
-[node name="Statue" parent="Monuments" instance=ExtResource( 13 )]
-transform = Transform( 0.817678, 0, 0.575676, 0, 1, 0, -0.575676, 0, 0.817678, 464.27, 0, 43.875 )
-
-[node name="White_house" parent="Monuments" instance=ExtResource( 14 )]
-transform = Transform( 0.986675, -0.00376303, -0.162662, 0.00394051, 0.999992, 0.000768544, 0.162657, -0.00139929, 0.986682, 382.684, 0, 133.673 )
-
-[node name="Distillery" parent="Monuments" instance=ExtResource( 16 )]
-transform = Transform( 0.956044, 0, 0.293223, 0, 1, 0, -0.293223, 0, 0.956044, 229.806, -1.21793, 256.21 )
-
-[node name="everglades" parent="Monuments" instance=ExtResource( 15 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 338.669, 0, 475.441 )
-
-[node name="Factory" parent="Monuments" instance=ExtResource( 17 )]
-transform = Transform( 0.826609, 0, -0.562776, 0, 1, 0, 0.562776, 0, 0.826609, 228.134, 0, 52.966 )
-
-[node name="Burgers" parent="Monuments" instance=ExtResource( 18 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -107.481, 0, 26.332 )
-
-[node name="Route66" parent="Monuments" instance=ExtResource( 19 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -74.3032, 0, 288.316 )
-
-[node name="Hollywood" parent="Monuments" instance=ExtResource( 20 )]
-transform = Transform( 0.996544, -0.000169527, 0.083068, 0.000159239, 1, 0.000130494, -0.083068, -0.000116818, 0.996544, -610.88, 0, 88.7605 )
-
-[node name="Aspen" parent="Monuments" instance=ExtResource( 21 )]
-transform = Transform( 0.516015, 0.000124115, 0.85658, -4.50868e-05, 1, -0.000117732, -0.85658, 2.21128e-05, 0.516015, -292.747, -0.01703, 148.549 )
-
-[node name="Traveller" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 413.761, -6.10352e-05, 83.213 )
-collision_mask = 3
-
-[node name="RouteSelector" parent="." instance=ExtResource( 6 )]
-
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.530926, 0.847418, 0, -0.847418, 0.530926, 0, 69.241, 18.77 )
-size = 80.0
-far = 1000.0
-script = ExtResource( 9 )
-max_zoom_global_point = Vector3( -40, 350, 150 )
-max_zoom_rotation = Vector3( -90, 0, 0 )
-max_zoom_fov = 100.0
-min_zoom_local_point = Vector3( 0, 70, 19 )
-min_zoom_rotation = Vector3( -57, 0, 0 )
-min_zoom_fov = 70.0
-
-[node name="TopBar" parent="." instance=ExtResource( 10 )]
 
 [node name="AmbientMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )

@@ -9,7 +9,8 @@ export var min_zoom_local_point: Vector3
 export var min_zoom_rotation: Vector3
 export var min_zoom_fov: float
 
-onready var traveller: Traveller = $"../Traveller"
+
+var traveller: Traveller
 
 
 var _zoom: = 0.0
@@ -29,9 +30,25 @@ func zoom(delta: float) -> void:
 
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_released("camera_zoom_in"):
+	if traveller._input_prefix == "traveller_keyboard":
+		_mouse_zoom(delta)
+	else:
+		_button_zoom(delta)
+
+
+func _mouse_zoom(delta: float) -> void:
+	if Input.is_action_just_released(traveller.pr("zoom_in")):
 		zoom(-delta)
-	elif Input.is_action_just_released("camera_zoom_out"):
+	elif Input.is_action_just_released(traveller.pr("zoom_out")):
+		zoom(delta)
+	else:
+		zoom(0)
+
+
+func _button_zoom(delta: float) -> void:
+	if Input.is_action_pressed(traveller.pr("zoom_in")):
+		zoom(-delta)
+	elif Input.is_action_pressed(traveller.pr("zoom_out")):
 		zoom(delta)
 	else:
 		zoom(0)

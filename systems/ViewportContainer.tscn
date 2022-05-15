@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://maps/ZoomingCamera.gd" type="Script" id=2]
+[ext_resource path="res://ui/RouteSelector.tscn" type="PackedScene" id=3]
+[ext_resource path="res://ui/TopBar.tscn" type="PackedScene" id=4]
+[ext_resource path="res://systems/PlayerViewport.gd" type="Script" id=5]
+
+[node name="ViewportContainer" type="ViewportContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+stretch = true
+script = ExtResource( 5 )
+
+[node name="Viewport" type="Viewport" parent="."]
+size = Vector2( 1024, 600 )
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="Camera" type="Camera" parent="Viewport"]
+transform = Transform( 1, 0, 0, 0, 0.530926, 0.847418, 0, -0.847418, 0.530926, 0, 69.241, 18.77 )
+size = 80.0
+far = 1000.0
+script = ExtResource( 2 )
+max_zoom_global_point = Vector3( -40, 350, 150 )
+max_zoom_rotation = Vector3( -90, 0, 0 )
+max_zoom_fov = 100.0
+min_zoom_local_point = Vector3( 0, 70, 19 )
+min_zoom_rotation = Vector3( -57, 0, 0 )
+min_zoom_fov = 70.0
+
+[node name="RouteSelector" parent="Viewport" instance=ExtResource( 3 )]
+
+[node name="TopBar" parent="Viewport" instance=ExtResource( 4 )]

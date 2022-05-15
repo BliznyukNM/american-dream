@@ -1,10 +1,7 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://ui/TopBar.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/dolars1.png" type="Texture" id=2]
-[ext_resource path="res://assets/textures/clock-empty.png" type="Texture" id=3]
-[ext_resource path="res://assets/textures/arrow-clock.png" type="Texture" id=4]
-[ext_resource path="res://assets/textures/calendar-empty.png" type="Texture" id=5]
 [ext_resource path="res://assets/textures/8652752_nft_investiment_sign_non_token_icon.png" type="Texture" id=6]
 
 [node name="TopBar" type="Control"]
@@ -57,54 +54,3 @@ margin_left = -39.0
 texture = ExtResource( 6 )
 expand = true
 stretch_mode = 5
-
-[node name="Time" type="Control" parent="."]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -20.0
-margin_top = 9.0
-margin_right = 20.0
-margin_bottom = 49.0
-
-[node name="Clock" type="TextureRect" parent="Time"]
-margin_left = -28.0
-margin_right = 12.0
-margin_bottom = 40.0
-texture = ExtResource( 3 )
-expand = true
-stretch_mode = 5
-
-[node name="Pivot" type="Control" parent="Time/Clock"]
-margin_left = 20.0
-margin_top = 22.0
-margin_right = 20.0
-margin_bottom = 22.0
-
-[node name="Arrow" type="TextureRect" parent="Time/Clock/Pivot"]
-margin_left = -4.0
-margin_top = -13.0
-margin_right = 4.0
-margin_bottom = 4.0
-texture = ExtResource( 4 )
-expand = true
-stretch_mode = 5
-
-[node name="Calendar" type="TextureRect" parent="Time"]
-margin_left = 23.0
-margin_right = 63.0
-margin_bottom = 40.0
-texture = ExtResource( 5 )
-expand = true
-stretch_mode = 5
-
-[node name="Days" type="Label" parent="Time/Calendar"]
-modulate = Color( 0, 0, 0, 1 )
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 2.0
-margin_top = 14.0
-margin_right = -2.0
-margin_bottom = -4.0
-text = "12"
-align = 1
-valign = 1
