@@ -1,8 +1,6 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://maps/Route.gd" type="Script" id=1]
-[ext_resource path="res://train/Station.gd" type="Script" id=2]
-[ext_resource path="res://maps/Train.gd" type="Script" id=3]
 [ext_resource path="res://maps/TrainSystem.gd" type="Script" id=4]
 [ext_resource path="res://train/Train.tscn" type="PackedScene" id=5]
 [ext_resource path="res://train/Station.tscn" type="PackedScene" id=6]
@@ -80,15 +78,11 @@ script = ExtResource( 4 )
 curve = SubResource( 6 )
 script = ExtResource( 1 )
 stations = [ NodePath("../NewYork"), NodePath("../Chicago") ]
-ticket_cost = 5
+ticket_cost = 15
 
-[node name="Train" type="PathFollow" parent="NewYork-Chicago" instance=ExtResource( 5 )]
+[node name="Train" parent="NewYork-Chicago" instance=ExtResource( 5 )]
 transform = Transform( 0.824564, 0, -0.565758, 0, 1, 0, 0.565769, 0, 0.824548, 413.013, 0, 61.6698 )
-rotation_mode = 4
-loop = false
-script = ExtResource( 3 )
 speed = 60
-next_station = 1
 
 [node name="Chicago-Kansas" type="Path" parent="."]
 curve = SubResource( 7 )
@@ -96,13 +90,9 @@ script = ExtResource( 1 )
 stations = [ NodePath("../Chicago"), NodePath("../Kansas") ]
 ticket_cost = 10
 
-[node name="Train" type="PathFollow" parent="Chicago-Kansas" instance=ExtResource( 5 )]
+[node name="Train" parent="Chicago-Kansas" instance=ExtResource( 5 )]
 transform = Transform( -0.596689, 0, -0.802462, 0, 1, 0, 0.802473, 0, -0.59668, 126.431, 0, 96.0507 )
-rotation_mode = 4
-loop = false
-script = ExtResource( 3 )
-speed = 70
-next_station = 1
+speed = 60
 
 [node name="Kansas-Houston" type="Path" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.758911, 0, 0 )
@@ -111,42 +101,30 @@ script = ExtResource( 1 )
 stations = [ NodePath("../Kansas"), NodePath("../Houston") ]
 ticket_cost = 15
 
-[node name="Train" type="PathFollow" parent="Kansas-Houston" instance=ExtResource( 5 )]
+[node name="Train" parent="Kansas-Houston" instance=ExtResource( 5 )]
 transform = Transform( 0.27986, 0, 0.960027, 0, 1, 0, -0.96004, 0, 0.279856, 44.7484, 0, 203.454 )
-rotation_mode = 4
-loop = false
-script = ExtResource( 3 )
-speed = 40
-next_station = 1
+speed = 60
 
 [node name="Houston-Atlanta" type="Path" parent="."]
 curve = SubResource( 13 )
 script = ExtResource( 1 )
 stations = [ NodePath("../Houston"), NodePath("../Atlanta") ]
-ticket_cost = 8
+ticket_cost = 15
 
-[node name="Train" type="PathFollow" parent="Houston-Atlanta" instance=ExtResource( 5 )]
+[node name="Train" parent="Houston-Atlanta" instance=ExtResource( 5 )]
 transform = Transform( -0.18839, 0, 0.982081, 0, 1, 0, -0.982095, 0, -0.188387, -20.5341, 0, 435.307 )
-rotation_mode = 4
-loop = false
-script = ExtResource( 3 )
-speed = 50
-next_station = 1
+speed = 60
 
 [node name="Atlanta-NewYork" type="Path" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.421692, 0, 1.26512 )
 curve = SubResource( 14 )
 script = ExtResource( 1 )
 stations = [ NodePath("../Atlanta"), NodePath("../NewYork") ]
-ticket_cost = 9
+ticket_cost = 15
 
-[node name="Train" type="PathFollow" parent="Atlanta-NewYork" instance=ExtResource( 5 )]
+[node name="Train" parent="Atlanta-NewYork" instance=ExtResource( 5 )]
 transform = Transform( -0.965789, 0, 0.259325, 0, 1, 0, -0.259329, 0, -0.965774, 253.117, 0, 315.534 )
-rotation_mode = 4
-loop = false
-script = ExtResource( 3 )
-speed = 45
-next_station = 1
+speed = 60
 
 [node name="Atlanta-Miami" type="Path" parent="."]
 curve = SubResource( 15 )
@@ -154,136 +132,93 @@ script = ExtResource( 1 )
 stations = [ NodePath("../Atlanta"), NodePath("../Miami") ]
 ticket_cost = 15
 
-[node name="Train" type="PathFollow" parent="Atlanta-Miami" instance=ExtResource( 5 )]
+[node name="Train" parent="Atlanta-Miami" instance=ExtResource( 5 )]
 transform = Transform( 0.646325, 0, -0.763051, 0, 1, 0, 0.763061, 0, 0.646317, 250.402, 0, 321.842 )
-rotation_mode = 4
-loop = false
-script = ExtResource( 3 )
-speed = 35
-next_station = 1
+speed = 60
 
 [node name="Seattle-SaltLakeCity" type="Path" parent="."]
 curve = SubResource( 16 )
 script = ExtResource( 1 )
 stations = [ NodePath("../Seattle"), NodePath("../SaltLakeCity") ]
-ticket_cost = 7
+ticket_cost = 15
 
-[node name="Train" type="PathFollow" parent="Seattle-SaltLakeCity" instance=ExtResource( 5 )]
+[node name="Train" parent="Seattle-SaltLakeCity" instance=ExtResource( 5 )]
 transform = Transform( 0.981247, 0, -0.192753, 0, 1, 0, 0.192756, 0, 0.981233, -562.235, 0, -141.894 )
-rotation_mode = 4
-loop = false
-script = ExtResource( 3 )
-next_station = 1
+speed = 60
 
 [node name="SaltLakeCity-LosAngeles" type="Path" parent="."]
 curve = SubResource( 17 )
 script = ExtResource( 1 )
 stations = [ NodePath("../SaltLakeCity"), NodePath("../LosAngeles") ]
+ticket_cost = 15
 
-[node name="Train" type="PathFollow" parent="SaltLakeCity-LosAngeles" instance=ExtResource( 5 )]
+[node name="Train" parent="SaltLakeCity-LosAngeles" instance=ExtResource( 5 )]
 transform = Transform( 0.865843, 0, -0.500309, 0, 1, 0, 0.500316, 0, 0.865831, -360.39, 0, 28.6776 )
-rotation_mode = 4
-loop = false
-script = ExtResource( 3 )
-next_station = 1
+speed = 60
 
 [node name="LosAngeles-Houston" type="Path" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2372, 0, 3.72867 )
 curve = SubResource( 18 )
 script = ExtResource( 1 )
 stations = [ NodePath("../LosAngeles"), NodePath("../Houston") ]
+ticket_cost = 20
 
-[node name="Train" type="PathFollow" parent="LosAngeles-Houston" instance=ExtResource( 5 )]
+[node name="Train" parent="LosAngeles-Houston" instance=ExtResource( 5 )]
 transform = Transform( 0.726719, 0, 0.686925, 0, 1, 0, -0.686935, 0, 0.726709, -575.944, 0, 188.857 )
-rotation_mode = 4
-loop = false
-script = ExtResource( 3 )
-next_station = 1
+speed = 60
 
 [node name="SaltLakeCity-Kansas" type="Path" parent="."]
 curve = SubResource( 19 )
 script = ExtResource( 1 )
 stations = [ NodePath("../SaltLakeCity"), NodePath("../Kansas") ]
+ticket_cost = 15
 
-[node name="Train" type="PathFollow" parent="SaltLakeCity-Kansas" instance=ExtResource( 5 )]
+[node name="Train" parent="SaltLakeCity-Kansas" instance=ExtResource( 5 )]
 transform = Transform( -0.802353, 0, 0.596841, 0, 1, 0, -0.596849, 0, -0.802342, -362.73, 0, 26.5075 )
-rotation_mode = 4
-loop = false
-script = ExtResource( 3 )
-next_station = 1
+speed = 60
 
 [node name="Seattle-Chicago" type="Path" parent="."]
 curve = SubResource( 20 )
 script = ExtResource( 1 )
 stations = [ NodePath("../Seattle"), NodePath("../Chicago") ]
+ticket_cost = 30
 
-[node name="Train" type="PathFollow" parent="Seattle-Chicago" instance=ExtResource( 5 )]
+[node name="Train" parent="Seattle-Chicago" instance=ExtResource( 5 )]
 transform = Transform( 0.466519, 0, 0.884499, 0, 1, 0, -0.884511, 0, 0.466513, -555.45, 0, -144.759 )
-rotation_mode = 4
-loop = false
-script = ExtResource( 3 )
-next_station = 1
+speed = 60
 
-[node name="NewYork" type="Area" parent="." instance=ExtResource( 6 )]
+[node name="NewYork" parent="." instance=ExtResource( 6 )]
 transform = Transform( 0.554801, 0, 0.831983, 0, 1, 0, -0.831983, 0, 0.554801, 421.734, 0, 59.812 )
-script = ExtResource( 2 )
 _routes = [ NodePath("../NewYork-Chicago"), NodePath("../Atlanta-NewYork") ]
 
-[node name="Chicago" type="Area" parent="." instance=ExtResource( 6 )]
+[node name="Chicago" parent="." instance=ExtResource( 6 )]
 transform = Transform( -0.9325, 0, 0.361169, 0, 1, 0, -0.361169, 0, -0.9325, 127.858, 0.160431, 90.72 )
-script = ExtResource( 2 )
 _routes = [ NodePath("../NewYork-Chicago"), NodePath("../Chicago-Kansas"), NodePath("../Seattle-Chicago") ]
 
-[node name="Kansas" type="Area" parent="." instance=ExtResource( 6 )]
+[node name="Kansas" parent="." instance=ExtResource( 6 )]
 transform = Transform( 0.0124962, 0, -0.999922, 0, 1, 0, 0.999922, 0, 0.0124962, 36.2435, 0, 204.697 )
-script = ExtResource( 2 )
 _routes = [ NodePath("../Chicago-Kansas"), NodePath("../Kansas-Houston"), NodePath("../SaltLakeCity-Kansas") ]
 
-[node name="Houston" type="Area" parent="." instance=ExtResource( 6 )]
+[node name="Houston" parent="." instance=ExtResource( 6 )]
 transform = Transform( -0.995198, 0, 0.0978782, 0, 1, 0, -0.0978782, 0, -0.995198, -25.4124, 0, 430.466 )
-script = ExtResource( 2 )
 _routes = [ NodePath("../Kansas-Houston"), NodePath("../Houston-Atlanta"), NodePath("../LosAngeles-Houston") ]
 
-[node name="Atlanta" type="Area" parent="." instance=ExtResource( 6 )]
+[node name="Atlanta" parent="." instance=ExtResource( 6 )]
 transform = Transform( 0.640445, 0, 0.768004, 0, 1, 0, -0.768004, 0, 0.640445, 257.825, 0, 320.764 )
-script = ExtResource( 2 )
 _routes = [ NodePath("../Houston-Atlanta"), NodePath("../Atlanta-NewYork"), NodePath("../Atlanta-Miami") ]
 
-[node name="Miami" type="Area" parent="." instance=ExtResource( 6 )]
+[node name="Miami" parent="." instance=ExtResource( 6 )]
 transform = Transform( -0.181755, 0, 0.983344, 0, 1, 0, -0.983344, 0, -0.181755, 358.439, 0, 518.175 )
-script = ExtResource( 2 )
 _routes = [ NodePath("../Atlanta-Miami") ]
 
-[node name="Seattle" type="Area" parent="." instance=ExtResource( 6 )]
+[node name="Seattle" parent="." instance=ExtResource( 6 )]
 transform = Transform( -0.873024, 2.06928e-08, -0.487677, 2.06053e-08, 1, 5.54449e-09, 0.487677, -5.20824e-09, -0.873024, -566.081, 0, -147.08 )
-script = ExtResource( 2 )
 _routes = [ NodePath("../Seattle-SaltLakeCity"), NodePath("../Seattle-Chicago") ]
 
-[node name="LosAngeles" type="Area" parent="." instance=ExtResource( 6 )]
+[node name="LosAngeles" parent="." instance=ExtResource( 6 )]
 transform = Transform( 0.31449, 0, -0.949261, 0, 1, 0, 0.949261, 0, 0.31449, -583.813, 0, 191.613 )
-script = ExtResource( 2 )
 _routes = [ NodePath("../SaltLakeCity-LosAngeles"), NodePath("../LosAngeles-Houston") ]
 
-[node name="SaltLakeCity" type="Area" parent="." instance=ExtResource( 6 )]
+[node name="SaltLakeCity" parent="." instance=ExtResource( 6 )]
 transform = Transform( 0.69242, 3.15375e-08, 0.721494, -3.15375e-08, 1, -1.34447e-08, -0.721494, -1.34447e-08, 0.69242, -355.438, 0, 28.8676 )
-script = ExtResource( 2 )
 _routes = [ NodePath("../SaltLakeCity-LosAngeles"), NodePath("../Seattle-SaltLakeCity"), NodePath("../SaltLakeCity-Kansas") ]
-
-[connection signal="body_entered" from="NewYork" to="NewYork" method="_on_traveller_in_range"]
-[connection signal="body_exited" from="NewYork" to="NewYork" method="_on_traveller_out_of_range"]
-[connection signal="body_entered" from="Chicago" to="Chicago" method="_on_traveller_in_range"]
-[connection signal="body_exited" from="Chicago" to="Chicago" method="_on_traveller_out_of_range"]
-[connection signal="body_entered" from="Kansas" to="Kansas" method="_on_traveller_in_range"]
-[connection signal="body_exited" from="Kansas" to="Kansas" method="_on_traveller_out_of_range"]
-[connection signal="body_entered" from="Houston" to="Houston" method="_on_traveller_in_range"]
-[connection signal="body_exited" from="Houston" to="Houston" method="_on_traveller_out_of_range"]
-[connection signal="body_entered" from="Atlanta" to="Atlanta" method="_on_traveller_in_range"]
-[connection signal="body_exited" from="Atlanta" to="Atlanta" method="_on_traveller_out_of_range"]
-[connection signal="body_entered" from="Miami" to="Miami" method="_on_traveller_in_range"]
-[connection signal="body_exited" from="Miami" to="Miami" method="_on_traveller_out_of_range"]
-[connection signal="body_entered" from="Seattle" to="Seattle" method="_on_traveller_in_range"]
-[connection signal="body_exited" from="Seattle" to="Seattle" method="_on_traveller_out_of_range"]
-[connection signal="body_entered" from="LosAngeles" to="LosAngeles" method="_on_traveller_in_range"]
-[connection signal="body_exited" from="LosAngeles" to="LosAngeles" method="_on_traveller_out_of_range"]
-[connection signal="body_entered" from="SaltLakeCity" to="SaltLakeCity" method="_on_traveller_in_range"]
-[connection signal="body_exited" from="SaltLakeCity" to="SaltLakeCity" method="_on_traveller_out_of_range"]
