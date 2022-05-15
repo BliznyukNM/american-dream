@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://ui/TopBar.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/dolars1.png" type="Texture" id=2]
 [ext_resource path="res://assets/textures/clock-empty.png" type="Texture" id=3]
 [ext_resource path="res://assets/textures/arrow-clock.png" type="Texture" id=4]
 [ext_resource path="res://assets/textures/calendar-empty.png" type="Texture" id=5]
+[ext_resource path="res://assets/textures/8652752_nft_investiment_sign_non_token_icon.png" type="Texture" id=6]
 
 [node name="TopBar" type="Control"]
 anchor_right = 1.0
@@ -36,7 +37,7 @@ valign = 1
 [node name="Points" type="Control" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -71.0
+margin_left = -94.0
 margin_top = 10.0
 margin_right = -17.0
 margin_bottom = 50.0
@@ -47,6 +48,15 @@ margin_right = 24.0
 text = "123"
 align = 2
 valign = 1
+
+[node name="TextureRect" type="TextureRect" parent="Points"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -39.0
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 5
 
 [node name="Time" type="Control" parent="."]
 anchor_left = 0.5
