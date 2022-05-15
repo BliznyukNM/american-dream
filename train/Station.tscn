@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://train/Station.gd" type="Script" id=1]
-[ext_resource path="res://assets/models/stations/LA-Seattle/Station_LosAngles_Seattle_Cube002.mesh" type="ArrayMesh" id=2]
+[ext_resource path="res://assets/models/groups/GroupA_Cube068.mesh" type="ArrayMesh" id=2]
 
 [sub_resource type="CylinderShape" id=2]
 height = 4.0
