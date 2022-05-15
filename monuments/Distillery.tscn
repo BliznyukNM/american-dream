@@ -18,5 +18,5 @@ shape = SubResource( 65 )
 [node name="Particles" parent="." instance=ExtResource( 16 )]
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
-transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0 )
+transform = Transform( 15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 0, 0 )
 mesh = ExtResource( 1 )
