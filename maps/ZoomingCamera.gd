@@ -22,14 +22,15 @@ var _zoom: = 0.0
 
 func zoom(delta: float) -> void:
 	var min_zoom_global_point = traveller.global_transform.origin + min_zoom_local_point
+	var middle_zoom_global_point = traveller.global_transform.origin + middle_zoom_local_point
 	_zoom = clamp(_zoom + delta, 0, 1)
-	var target_point = lerp(min_zoom_global_point, max_zoom_global_point, _zoom)
+	var target_point = lerp(middle_zoom_global_point, max_zoom_global_point, (_zoom - 0.5) * 2) if _zoom > 0.5 else lerp(min_zoom_global_point, middle_zoom_global_point, _zoom * 2)
 	global_transform.origin = target_point
 	
-	var target_rotation = lerp(min_zoom_rotation, max_zoom_rotation, _zoom)
+	var target_rotation = lerp(middle_zoom_rotation, max_zoom_rotation, (_zoom - 0.5) * 2) if _zoom > 0.5 else lerp(min_zoom_rotation, middle_zoom_rotation, _zoom * 2)
 	rotation_degrees = target_rotation
 	
-	var target_fov = lerp(min_zoom_fov, max_zoom_fov, _zoom)
+	var target_fov = lerp(middle_zoom_fov, max_zoom_fov, (_zoom - 0.5) * 2) if _zoom > 0.5 else lerp(min_zoom_fov, middle_zoom_fov, _zoom * 2)
 	fov = target_fov
 
 
