@@ -82,7 +82,7 @@ ticket_cost = 15
 
 [node name="Train" parent="NewYork-Chicago" instance=ExtResource( 5 )]
 transform = Transform( 0.824564, 0, -0.565758, 0, 1, 0, 0.565769, 0, 0.824548, 413.013, 0, 61.6698 )
-speed = 25
+speed = 35
 
 [node name="Chicago-Kansas" type="Path" parent="."]
 curve = SubResource( 7 )
@@ -92,7 +92,7 @@ ticket_cost = 10
 
 [node name="Train" parent="Chicago-Kansas" instance=ExtResource( 5 )]
 transform = Transform( -0.596689, 0, -0.802462, 0, 1, 0, 0.802473, 0, -0.59668, 126.431, 0, 96.0507 )
-speed = 25
+speed = 35
 
 [node name="Kansas-Houston" type="Path" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.758911, 0, 0 )
@@ -103,7 +103,7 @@ ticket_cost = 15
 
 [node name="Train" parent="Kansas-Houston" instance=ExtResource( 5 )]
 transform = Transform( 0.27986, 0, 0.960027, 0, 1, 0, -0.96004, 0, 0.279856, 44.7484, 0, 203.454 )
-speed = 25
+speed = 35
 
 [node name="Houston-Atlanta" type="Path" parent="."]
 curve = SubResource( 13 )
@@ -113,7 +113,7 @@ ticket_cost = 15
 
 [node name="Train" parent="Houston-Atlanta" instance=ExtResource( 5 )]
 transform = Transform( -0.18839, 0, 0.982081, 0, 1, 0, -0.982095, 0, -0.188387, -20.5341, 0, 435.307 )
-speed = 25
+speed = 35
 
 [node name="Atlanta-NewYork" type="Path" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.421692, 0, 1.26512 )
@@ -124,7 +124,7 @@ ticket_cost = 15
 
 [node name="Train" parent="Atlanta-NewYork" instance=ExtResource( 5 )]
 transform = Transform( -0.965789, 0, 0.259325, 0, 1, 0, -0.259329, 0, -0.965774, 253.117, 0, 315.534 )
-speed = 25
+speed = 35
 
 [node name="Atlanta-Miami" type="Path" parent="."]
 curve = SubResource( 15 )
@@ -134,7 +134,7 @@ ticket_cost = 15
 
 [node name="Train" parent="Atlanta-Miami" instance=ExtResource( 5 )]
 transform = Transform( 0.646325, 0, -0.763051, 0, 1, 0, 0.763061, 0, 0.646317, 250.402, 0, 321.842 )
-speed = 25
+speed = 35
 
 [node name="Seattle-SaltLakeCity" type="Path" parent="."]
 curve = SubResource( 16 )
@@ -144,7 +144,7 @@ ticket_cost = 15
 
 [node name="Train" parent="Seattle-SaltLakeCity" instance=ExtResource( 5 )]
 transform = Transform( 0.981247, 0, -0.192753, 0, 1, 0, 0.192756, 0, 0.981233, -562.235, 0, -141.894 )
-speed = 25
+speed = 35
 
 [node name="SaltLakeCity-LosAngeles" type="Path" parent="."]
 curve = SubResource( 17 )
@@ -154,7 +154,7 @@ ticket_cost = 15
 
 [node name="Train" parent="SaltLakeCity-LosAngeles" instance=ExtResource( 5 )]
 transform = Transform( 0.865843, 0, -0.500309, 0, 1, 0, 0.500316, 0, 0.865831, -360.39, 0, 28.6776 )
-speed = 25
+speed = 35
 
 [node name="LosAngeles-Houston" type="Path" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2372, 0, 3.72867 )
@@ -165,7 +165,7 @@ ticket_cost = 20
 
 [node name="Train" parent="LosAngeles-Houston" instance=ExtResource( 5 )]
 transform = Transform( 0.726719, 0, 0.686925, 0, 1, 0, -0.686935, 0, 0.726709, -575.944, 0, 188.857 )
-speed = 25
+speed = 35
 
 [node name="SaltLakeCity-Kansas" type="Path" parent="."]
 curve = SubResource( 19 )
@@ -175,7 +175,7 @@ ticket_cost = 15
 
 [node name="Train" parent="SaltLakeCity-Kansas" instance=ExtResource( 5 )]
 transform = Transform( -0.802353, 0, 0.596841, 0, 1, 0, -0.596849, 0, -0.802342, -362.73, 0, 26.5075 )
-speed = 25
+speed = 35
 
 [node name="Seattle-Chicago" type="Path" parent="."]
 curve = SubResource( 20 )
@@ -185,7 +185,7 @@ ticket_cost = 30
 
 [node name="Train" parent="Seattle-Chicago" instance=ExtResource( 5 )]
 transform = Transform( 0.466519, 0, 0.884499, 0, 1, 0, -0.884511, 0, 0.466513, -555.45, 0, -144.759 )
-speed = 25
+speed = 35
 
 [node name="NewYork" parent="." instance=ExtResource( 6 )]
 transform = Transform( 0.554801, 0, 0.831983, 0, 1, 0, -0.831983, 0, 0.554801, 421.734, 0, 59.812 )

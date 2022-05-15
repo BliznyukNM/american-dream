@@ -12,6 +12,7 @@ radius = 0.5
 [node name="Traveller" type="KinematicBody"]
 script = ExtResource( 1 )
 speed = 5.0
+car_speed = 50.0
 money = 1300.0
 car_rent_per_second = 20
 
