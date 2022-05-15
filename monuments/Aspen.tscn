@@ -5,7 +5,7 @@
 [ext_resource path="res://effects/Explore.tscn" type="PackedScene" id=16]
 
 [sub_resource type="CylinderShape" id=65]
-radius = 27.8385
+radius = 33.0
 
 [node name="Aspen" type="Area"]
 script = ExtResource( 15 )
