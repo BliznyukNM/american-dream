@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Path",
+"class": "Route",
+"language": "GDScript",
+"path": "res://maps/Route.gd"
+}, {
 "base": "Area",
 "class": "Station",
 "language": "GDScript",
@@ -19,20 +24,15 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://maps/Train.gd"
 }, {
-"base": "Path",
-"class": "TrainPath",
-"language": "GDScript",
-"path": "res://maps/TrainPath.gd"
-}, {
 "base": "KinematicBody",
 "class": "Traveller",
 "language": "GDScript",
 "path": "res://character/Traveller.gd"
 } ]
 _global_script_class_icons={
+"Route": "",
 "Station": "",
 "Train": "",
-"TrainPath": "",
 "Traveller": ""
 }
 

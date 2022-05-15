@@ -9,7 +9,6 @@ signal routes_changed(traveller, routes)
 
 
 export var speed: = 10.0
-export var gravity: = -9.81
 export var money: = 100
 export var points: = 0
 
@@ -46,7 +45,6 @@ func _physics_process(delta: float) -> void:
 func _apply_movement(direction: Vector2, delta: float) -> void:
 	var movement: = Vector3(direction.x, 0, direction.y)
 	movement = movement.normalized() if movement.length_squared() > 1 else movement
-	movement.y = 0 if is_on_floor() else gravity
 	move_and_slide(movement * speed, Vector3.UP, true, 4)
 
 

@@ -12,13 +12,12 @@ export var stop_delay: = 2.0
 export var next_station: = 0
 
 
-var path: TrainPath
+var path: Route
 
 
 const epsilon = 0.1
 
 
-var _stops: Array
 var _waiting: bool
 var _registered_travellers: Array
 
@@ -28,9 +27,8 @@ func _ready() -> void:
 	connect("station_reached", self, "_wait_at_station")
 
 
-func register(path: TrainPath, stops: Array) -> void:
+func register(path: Route) -> void:
 	self.path = path
-	_stops = stops
 
 
 func start() -> void:
@@ -39,11 +37,12 @@ func start() -> void:
 
 func _go_to_station(_train, _index) -> void:
 	_waiting = false
-	var point_from = 0 if next_station == 0 else _stops[next_station - 1]
-	var point_next = _stops[next_station]
+	
+	var point_from = 0 if next_station == 1 else path.curve.get_baked_length()
+	var point_next = 0 if next_station == 0 else path.curve.get_baked_length()
 	
 	var tween = create_tween()
-	tween.tween_property(self, "offset", point_next + epsilon, (point_next - point_from) / speed).set_trans(Tween.TRANS_QUAD)
+	tween.tween_property(self, "offset", point_next + epsilon, abs(point_next - point_from) / speed).set_trans(Tween.TRANS_QUAD)
 	
 	yield(tween, "finished")
 	
@@ -57,7 +56,7 @@ func _wait_at_station(_train, _index) -> void:
 	_waiting = true
 	yield(get_tree().create_timer(stop_delay), "timeout")
 	var previous_station = next_station
-	next_station = (next_station + 1) % _stops.size()
+	next_station = (next_station + 1) % 2
 	emit_signal("station_left", self, previous_station)
 
 
