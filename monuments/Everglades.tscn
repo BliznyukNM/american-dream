@@ -18,6 +18,3 @@ shape = SubResource( 4 )
 [node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0 )
 mesh = ExtResource( 1 )
-
-[connection signal="body_entered" from="." to="." method="_on_traveller_entered"]
-[connection signal="body_exited" from="." to="." method="_on_traveller_exited"]
