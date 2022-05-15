@@ -1,4 +1,5 @@
 extends Spatial
+class_name Game
 
 
 export var hours: = 336.0

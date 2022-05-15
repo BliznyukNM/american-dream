@@ -22,8 +22,7 @@
 
 [node name="UnitedStates" type="Spatial"]
 script = ExtResource( 7 )
-player_count = 2
-input_prefixes = [ "traveller_joy_1", "traveller_keyboard" ]
+input_prefixes = [ "traveller_keyboard", "traveller_joy_1" ]
 starting_points = [ Vector3( 402, 0, 72 ), Vector3( 398, 0, 68 ) ]
 
 [node name="World" type="Spatial" parent="."]
